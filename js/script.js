@@ -61,17 +61,17 @@ const posts = [
 let container = document.getElementById('post')
 
 //utilizzando un ciclo for each, ciclo l'array images per creare gli espositori delle immagini
-posts.forEach((obj, elem) => {
-    
+posts.forEach((elem) => {
+    container.innerHTML +=
     `
     <div class="post">
             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
-                        <img class="profile-pic" src="${elem.image}" alt="Phil Mangione">                    
+                        <img class="profile-pic" src="${elem.author.image}" alt="${elem.author.name}">                    
                     </div>
                     <div class="post-meta__data">
-                        <div class="post-meta__author">${elem.name}</div>
+                        <div class="post-meta__author">${elem.author.name}</div>
                         <div class="post-meta__time">${elem.created}</div>
                     </div>                    
                 </div>
@@ -94,8 +94,7 @@ posts.forEach((obj, elem) => {
                 </div> 
             </div>            
         </div>
-    `
-    console.log(`id: ${obj["id"]}, content: ${obj["content"]}, media: ${obj["media"]}, name: ${obj["name"]}, image: ${obj["image"]}, likes: ${obj["likes"]}, created: ${obj["created"]},`);
+    `;
 })
 
 //recupero tutti gli elementi che hanno la classe .card

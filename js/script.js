@@ -55,3 +55,48 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+
+//recupero l'lelemento del dom che contiene le immagini
+let container = document.getElementById('post')
+
+//utilizzando un ciclo for each, ciclo l'array images per creare gli espositori delle immagini
+posts.forEach((obj, elem) => {
+    
+    `
+    <div class="post">
+            <div class="post__header">
+                <div class="post-meta">                    
+                    <div class="post-meta__icon">
+                        <img class="profile-pic" src="${elem.image}" alt="Phil Mangione">                    
+                    </div>
+                    <div class="post-meta__data">
+                        <div class="post-meta__author">${elem.name}</div>
+                        <div class="post-meta__time">${elem.created}</div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="post__text">${elem.content}</div>
+            <div class="post__image">
+                <img src="${elem.media}" alt="">
+            </div>
+            <div class="post__footer">
+                <div class="likes js-likes">
+                    <div class="likes__cta">
+                        <a class="like-button  js-like-button" href="#" data-postid="${elem.id}">
+                            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                            <span class="like-button__label">Mi Piace</span>
+                        </a>
+                    </div>
+                    <div class="likes__counter">
+                        Piace a <b id="like-counter-1" class="js-likes-counter">${elem.likes}</b> persone
+                    </div>
+                </div> 
+            </div>            
+        </div>
+    `
+    console.log(`id: ${obj["id"]}, content: ${obj["content"]}, media: ${obj["media"]}, name: ${obj["name"]}, image: ${obj["image"]}, likes: ${obj["likes"]}, created: ${obj["created"]},`);
+})
+
+//recupero tutti gli elementi che hanno la classe .card
+const posting = document.querySelectorAll('post')

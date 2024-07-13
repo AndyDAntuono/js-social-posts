@@ -56,7 +56,85 @@ const posts = [
     }
 ];
 
+//creo una funzione per la creazione dei post nel DOM
+function createPosts(post) {
 
+    //recupero l'lelemento del dom che contiene i post
+    let container = document.getElementById('post')
+
+    posts.forEach((elem) => {
+        container.innerHTML +=
+        `
+        <div class="post">
+                <div class="post__header">
+                    <div class="post-meta">                    
+                        <div class="post-meta__icon">
+                            <img class="profile-pic" src="${elem.author.image}" alt="${elem.author.name}">                    
+                        </div>
+                        <div class="post-meta__data">
+                            <div class="post-meta__author">${elem.author.name}</div>
+                            <div class="post-meta__time">${elem.created}</div>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="post__text">${elem.content}</div>
+                <div class="post__image">
+                    <img src="${elem.media}" alt="">
+                </div>
+                <div class="post__footer">
+                    <div class="likes js-likes">
+                        <div class="likes__cta">
+                            <a class="like-button  js-like-button" href="#" data-postid="${elem.id}">
+                                <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                                <span class="like-button__label">Mi Piace</span>
+                            </a>
+                        </div>
+                        <div class="likes__counter">
+                            Piace a <b id="like-counter-1" class="js-likes-counter">${elem.likes}</b> persone
+                        </div>
+                    </div> 
+                </div>            
+            </div>
+        `;
+
+        //selezioni il bottone like
+        document.addEventListener(function () {
+            const likeButton = document.getElementsByClassName("js-like-button")
+            const likeCounter = document.getElementsByClassName("js-likes_counter")
+            
+            //aggiungo un secondo listener per l'evento click del bottone "like"
+            likeButton.addEventListener("click", function() {
+                //applico il toggle sul bottone liked
+                likeButton.classList.toggle("liked");
+                console.log(likeButton.classList);
+                
+                //verifico il valore corrente del contatore
+                let count = parseInt(likeCounter.textContent);
+                console.log(count);
+                
+                //incremento il contatore di like
+                if (likeButton.classList.contains("liked")) {
+                    count += 1; //aumenta il contatore di 1
+                    console.log(count);
+                }
+                
+                //aggiorno il test del contatore con il nuovo valore
+                likeCounter.textContent = count;
+            })
+        });
+    });
+
+}
+
+//recupero tutti gli elementi che hanno la classe .post
+const posting = document.querySelectorAll('post')
+
+//eseguo la funzione per creare i post quando il documento è pronto
+document.addEventListener(function() {
+    createPosts(posts);
+})
+
+/*
 //recupero l'lelemento del dom che contiene i post
 let container = document.getElementById('post')
 
@@ -99,7 +177,9 @@ posts.forEach((elem) => {
 
 //recupero tutti gli elementi che hanno la classe .post
 const posting = document.querySelectorAll('post')
+*/
 
+/*
 //selezioni il bottone like
 document.addEventListener(function () {
     const likeButton = document.getElementsByClassName("js-like-button")
@@ -125,3 +205,4 @@ document.addEventListener(function () {
         likeCounter.textContent = count;
     })
 });
+*/

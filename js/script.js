@@ -55,9 +55,9 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
-
+/*
 //creo una funzione per la creazione dei post nel DOM
-function createPosts(post) {
+function createPosts(posts) {
 
     //recupero l'lelemento del dom che contiene i post
     let container = document.getElementById('post')
@@ -96,32 +96,6 @@ function createPosts(post) {
                 </div>            
             </div>
         `;
-
-        //selezioni il bottone like
-        document.addEventListener(function () {
-            const likeButton = document.getElementsByClassName("js-like-button")
-            const likeCounter = document.getElementsByClassName("js-likes_counter")
-            
-            //aggiungo un secondo listener per l'evento click del bottone "like"
-            likeButton.addEventListener("click", function() {
-                //applico il toggle sul bottone liked
-                likeButton.classList.toggle("liked");
-                console.log(likeButton.classList);
-                
-                //verifico il valore corrente del contatore
-                let count = parseInt(likeCounter.textContent);
-                console.log(count);
-                
-                //incremento il contatore di like
-                if (likeButton.classList.contains("liked")) {
-                    count += 1; //aumenta il contatore di 1
-                    console.log(count);
-                }
-                
-                //aggiorno il test del contatore con il nuovo valore
-                likeCounter.textContent = count;
-            })
-        });
     });
 
 }
@@ -133,8 +107,9 @@ const posting = document.querySelectorAll('post')
 document.addEventListener(function() {
     createPosts(posts);
 })
+*/
 
-/*
+
 //recupero l'lelemento del dom che contiene i post
 let container = document.getElementById('post')
 
@@ -161,7 +136,7 @@ posts.forEach((elem) => {
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="${elem.id}">
+                        <a class="like-button  js-like-button" href="#${elem.id}" data-postid="${elem.id}">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
@@ -176,8 +151,20 @@ posts.forEach((elem) => {
 });
 
 //recupero tutti gli elementi che hanno la classe .post
-const posting = document.querySelectorAll('post')
-*/
+const posting = document.querySelectorAll('.post')
+console.log(posting);
+
+
+const likeButton = document.querySelectorAll('.js-like-button')
+console.log(likeButton);
+
+const likeId = []
+
+likeButton.forEach((button) => {
+    button.addEventListener("click", function() {
+        button.classList.add('like-button--liked')
+    }) 
+}) 
 
 /*
 //selezioni il bottone like

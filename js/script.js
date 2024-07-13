@@ -142,7 +142,7 @@ posts.forEach((elem) => {
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${elem.likes}</b> persone
+                        Piace a <b id="like-counter${elem.id}" class="js-likes-counter">${elem.likes}</b> persone
                     </div>
                 </div> 
             </div>            
@@ -150,19 +150,22 @@ posts.forEach((elem) => {
     `;
 });
 
-//recupero tutti gli elementi che hanno la classe .post
-const posting = document.querySelectorAll('.post')
-console.log(posting);
-
-
+// creo una costante che comprenda tutti i div .js-like-button
 const likeButton = document.querySelectorAll('.js-like-button')
 console.log(likeButton);
 
+// creo un array vuoto
 const likeId = []
 
+//utilizzo un ciclo forEach per aggiungere l'evento click ad ogni bottone 
 likeButton.forEach((button) => {
     button.addEventListener("click", function() {
-        button.classList.add('like-button--liked')
+        // aggiungo la classe che mi permette di colorare il bottone
+        button.classList.add('like-button--liked');
+        // creo una costante che il valore dell'attributo data-postid che equivale ad un numero
+        const dataPostId = button.getAttribute('data-postid');
+        // creo una costante per recuperare il contatore in base al valore recuperate con dataPostId
+        const counter = document.getElementById('like-counter'+dataPostId);
     }) 
 }) 
 

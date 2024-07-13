@@ -95,7 +95,33 @@ posts.forEach((elem) => {
             </div>            
         </div>
     `;
-})
+});
 
 //recupero tutti gli elementi che hanno la classe .post
 const posting = document.querySelectorAll('post')
+
+//selezioni il bottone like
+document.addEventListener(function () {
+    const likeButton = document.getElementsByClassName("js-like-button")
+    const likeCounter = document.getElementsByClassName("js-likes_counter")
+
+    //aggiungo un secondo listener per l'evento click del bottone "like"
+    likeButton.addEventListener("click", function() {
+        //applico il toggle sul bottone liked
+        likeButton.classList.toggle("liked");
+        console.log(likeButton.classList);
+
+        //verifico il valore corrente del contatore
+        let count = parseInt(likeCounter.textContent);
+        console.log(count);
+
+        //incremento il contatore di like
+        if (likeButton.classList.contains("liked")) {
+            count += 1; //aumenta il contatore di 1
+            console.log(count);
+        }
+
+        //aggiorno il test del contatore con il nuovo valore
+        likeCounter.textContent = count;
+    })
+});

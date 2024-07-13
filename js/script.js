@@ -166,6 +166,10 @@ likeButton.forEach((button) => {
         const dataPostId = button.getAttribute('data-postid');
         // creo una costante per recuperare il contatore in base al valore recuperate con dataPostId
         const counter = document.getElementById('like-counter'+dataPostId);
+        if (!likeId.includes(dataPostId)) {
+            likeId.push(dataPostId)
+            counter.innerHTML++
+        }
     }) 
 }) 
 

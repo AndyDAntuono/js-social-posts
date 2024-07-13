@@ -57,10 +57,10 @@ const posts = [
 ];
 
 
-//recupero l'lelemento del dom che contiene le immagini
+//recupero l'lelemento del dom che contiene i post
 let container = document.getElementById('post')
 
-//utilizzando un ciclo for each, ciclo l'array images per creare gli espositori delle immagini
+//utilizzando un ciclo for each, ciclo l'array dei post per poter sostituire il contenuto del div "post" del file index.html con una struttura html simile in cui però ho modificando pezzi sfruttando gli elementi delle proprietà dell'array post
 posts.forEach((elem) => {
     container.innerHTML +=
     `
@@ -97,5 +97,5 @@ posts.forEach((elem) => {
     `;
 })
 
-//recupero tutti gli elementi che hanno la classe .card
+//recupero tutti gli elementi che hanno la classe .post
 const posting = document.querySelectorAll('post')

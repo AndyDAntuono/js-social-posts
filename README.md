@@ -17,3 +17,15 @@ Prima scriviamo nei commenti la logica in italiano e poi traduciamo in codice.
 console.log() è nostro amico.
 Quando un pezzo di codice funziona, chiediamoci se possiamo scomporlo in funzioni più piccole.
 
+1 - recupero l'lelemento del dom che contiene i post;
+1.2 - utilizzando un ciclo for each, ciclo l'array dei post per poter sostituire il contenuto del div "post" del file index.html con una struttura html simile in cui però ho modificando pezzi sfruttando gli elementi delle proprietà dell'array post:
+1.1.1 - sostituisco il contenuto di src con l'elemento (dell'array di oggetti post) author.image;
+1.1.2 - sostituisco il contenuto di di alt con l'elmento author.name del div .post-meta_icon;
+1.1.3 - sostituisco il contenuto del div .post-meta_author con con l'elmento author.name;
+1.1.4 - sostituisco il contenuto del div .post-meta_time con con l'elmento created;
+1.1.5 - sostituisco il contenuto del div .post_text con con l'elmento content;
+1.1.6 - sostituisco il contenuto di src del div .post_image  con con l'elmento media;
+1.1.7 - sostituisco il contenuto di data-postid del div .like-button con con l'elmento id;
+1.1.8 - sostituisco il contenuto del div .js-likes counter con con l'elmento likes;
+2 - recuopero tutti gli elementi che hanno la classe post
+3 - cancello l'interno del div .post poiché verrà sostitita da ciclo for each applicato all'array  di oggett post;

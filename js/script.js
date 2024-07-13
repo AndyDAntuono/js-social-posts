@@ -166,8 +166,10 @@ likeButton.forEach((button) => {
         const dataPostId = button.getAttribute('data-postid');
         // creo una costante per recuperare il contatore in base al valore recuperate con dataPostId
         const counter = document.getElementById('like-counter'+dataPostId);
+        // decido che SE l'array likeId NON contine il valore dataPostId può aggiungerlo
         if (!likeId.includes(dataPostId)) {
             likeId.push(dataPostId)
+            //inotre il contenuto della costante counter aumenta di uno
             counter.innerHTML++
         }
     }) 
